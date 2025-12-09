@@ -12,7 +12,7 @@ const BusinessCard = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">Визитка АРСЕГО</h1>
+          <h1 className="text-3xl font-bold text-slate-800 mb-2">Визитка ARSEGO</h1>
           <p className="text-slate-600">Нажмите на визитку, чтобы перевернуть</p>
         </div>
 
@@ -44,38 +44,36 @@ const BusinessCard = () => {
             }}
           >
             <Card 
-              className="absolute inset-0 backface-hidden bg-white shadow-2xl"
+              className="absolute inset-0 backface-hidden bg-gradient-to-br from-blue-500 to-slate-700 shadow-2xl"
               style={{ backfaceVisibility: 'hidden' }}
             >
               <div className="h-full p-8 flex flex-col">
                 <div className="flex items-center justify-center mb-6">
-                  <div className="flex items-center gap-3 border-2 border-primary rounded-lg px-4 py-2">
-                    <Icon name="Brush" className="text-primary" size={20} />
-                    <Icon name="Droplet" className="text-primary" size={20} />
-                    <Icon name="FlaskConical" className="text-primary" size={20} />
+                  <div className="flex items-center gap-3 border-2 border-white rounded-lg px-4 py-2">
+                    <Icon name="Brush" className="text-white" size={20} />
+                    <Icon name="Droplet" className="text-white" size={20} />
+                    <Icon name="FlaskConical" className="text-white" size={20} />
                   </div>
-                  <h2 className="text-4xl font-bold text-slate-800 ml-4">АРСЕГО</h2>
+                  <h2 className="text-4xl font-bold text-white ml-4">ARSEGO</h2>
                 </div>
 
                 <div className="flex-1 grid grid-cols-3 gap-6 mb-6">
                   <div className="text-center">
-                    <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
-                      <Icon name="Brush" className="text-primary" size={28} />
+                    <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                      <Icon name="Brush" className="text-white" size={28} />
                     </div>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Ремонт квартир под ключ</h3>
-                    <ul className="text-xs text-slate-600 space-y-1">
-                      <li>Выравнивание стен</li>
-                      <li>Замена сантехники</li>
-                      <li>Электромонтаж</li>
+                    <h3 className="font-semibold text-white mb-2 text-sm">Ремонт квартир под ключ</h3>
+                    <ul className="text-xs text-white/90 space-y-1">
+                      <li>Предпродажная подготовка квартир</li>
                     </ul>
                   </div>
 
                   <div className="text-center">
-                    <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
-                      <Icon name="Droplet" className="text-primary" size={28} />
+                    <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                      <Icon name="Droplet" className="text-white" size={28} />
                     </div>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Клининг и химчистка</h3>
-                    <ul className="text-xs text-slate-600 space-y-1">
+                    <h3 className="font-semibold text-white mb-2 text-sm">Клининг и химчистка</h3>
+                    <ul className="text-xs text-white/90 space-y-1">
                       <li>Генеральная уборка</li>
                       <li>Чистка мебели</li>
                       <li>Послестроительная</li>
@@ -83,11 +81,11 @@ const BusinessCard = () => {
                   </div>
 
                   <div className="text-center">
-                    <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
-                      <Icon name="FlaskConical" className="text-primary" size={28} />
+                    <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                      <Icon name="FlaskConical" className="text-white" size={28} />
                     </div>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Поставка профессиональной химии</h3>
-                    <ul className="text-xs text-slate-600 space-y-1">
+                    <h3 className="font-semibold text-white mb-2 text-sm">Поставка профессиональной химии</h3>
+                    <ul className="text-xs text-white/90 space-y-1">
                       <li>HoReCa</li>
                       <li>Прачечные</li>
                       <li>Клининговые компании</li>
@@ -95,12 +93,12 @@ const BusinessCard = () => {
                   </div>
                 </div>
 
-                <div className="text-center border-t pt-4">
-                  <div className="flex items-center justify-center gap-3 text-sm text-slate-700 mb-2">
-                    <Icon name="Phone" size={18} className="text-primary" />
+                <div className="text-center border-t border-white/30 pt-4">
+                  <div className="flex items-center justify-center gap-3 text-sm text-white mb-2">
+                    <Icon name="Phone" size={18} className="text-white" />
                     <span className="font-medium">{phone}</span>
                   </div>
-                  <p className="text-xs text-slate-500 italic">Комплексные решения для вашего пространства</p>
+                  <p className="text-xs text-white/80 italic">Комплексные решения для вашего пространства</p>
                 </div>
               </div>
             </Card>
@@ -114,7 +112,7 @@ const BusinessCard = () => {
             >
               <div className="h-full p-8 flex flex-col">
                 <div className="mb-6 pb-4 border-b text-center">
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">АРСЕГО</h3>
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">ARSEGO</h3>
                   <p className="text-xs text-slate-500">10 лет на рынке • 500+ проектов</p>
                 </div>
 
@@ -122,12 +120,7 @@ const BusinessCard = () => {
                   <div>
                     <h4 className="font-semibold text-primary mb-2">Ремонт под ключ</h4>
                     <ul className="space-y-1 text-slate-600">
-                      <li>• Проектирование</li>
-                      <li>• Отделочные работы</li>
-                      <li>• Сантехника</li>
-                      <li>• Электрика</li>
-                      <li>• Установка дверей</li>
-                      <li>• Напольные покрытия</li>
+                      <li>• Предпродажная подготовка квартир</li>
                     </ul>
                   </div>
 
