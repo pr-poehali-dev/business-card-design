@@ -156,19 +156,13 @@ const BusinessCard = () => {
                   </div>
                 </div>
 
-                <div className="flex items-end justify-between pt-4 border-t">
-                  <div className="text-xs text-slate-600">
-                    <p className="font-semibold mb-1 flex items-center gap-2">
-                      <Icon name="Phone" size={14} className="text-primary" />
+                <div className="flex items-center justify-center pt-4 border-t">
+                  <div className="text-center text-slate-600">
+                    <p className="font-semibold mb-1 flex items-center justify-center gap-2">
+                      <Icon name="Phone" size={16} className="text-primary" />
                       {phone}
                     </p>
-                    <p className="text-slate-500">Звоните с 9:00 до 21:00</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-slate-800 rounded flex items-center justify-center mb-1">
-                      <Icon name="QrCode" className="text-white" size={40} />
-                    </div>
-                    <p className="text-xs text-slate-500">Узнайте больше</p>
+                    <p className="text-xs text-slate-500">Звоните с 9:00 до 21:00</p>
                   </div>
                 </div>
               </div>
