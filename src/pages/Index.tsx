@@ -62,9 +62,10 @@ const BusinessCard = () => {
                     <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                       <Icon name="Brush" className="text-white" size={28} />
                     </div>
-                    <h3 className="font-semibold text-white mb-2 text-sm">Ремонт квартир под ключ</h3>
+                    <h3 className="font-semibold text-white mb-2 text-sm">Ремонт под ключ</h3>
                     <ul className="text-xs text-white/90 space-y-1">
-                      <li>Предпродажная подготовка квартир</li>
+                      <li>Ремонт по дизайн проекту</li>
+                      <li>Предпродажная подготовка</li>
                     </ul>
                   </div>
 
@@ -76,7 +77,8 @@ const BusinessCard = () => {
                     <ul className="text-xs text-white/90 space-y-1">
                       <li>Генеральная уборка</li>
                       <li>Чистка мебели</li>
-                      <li>Послестроительная</li>
+                      <li>Мойка окон</li>
+                      <li>Уборка после ремонта</li>
                     </ul>
                   </div>
 
@@ -120,19 +122,18 @@ const BusinessCard = () => {
                   <div>
                     <h4 className="font-semibold text-primary mb-2">Ремонт под ключ</h4>
                     <ul className="space-y-1 text-slate-600">
-                      <li>• Предпродажная подготовка квартир</li>
+                      <li>• Ремонт по дизайн проекту</li>
+                      <li>• Предпродажная подготовка</li>
                     </ul>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-primary mb-2">Профессиональный клининг</h4>
+                    <h4 className="font-semibold text-primary mb-2">Клининг и химчистка</h4>
                     <ul className="space-y-1 text-slate-600">
                       <li>• Генеральная уборка</li>
-                      <li>• Послестроительная</li>
-                      <li>• Химчистка мебели</li>
+                      <li>• Чистка мебели</li>
                       <li>• Мойка окон</li>
-                      <li>• Чистка ковров</li>
-                      <li>• Регулярное обслуживание</li>
+                      <li>• Уборка после ремонта</li>
                     </ul>
                   </div>
 
