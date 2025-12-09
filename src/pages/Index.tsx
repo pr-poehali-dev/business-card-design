@@ -1,12 +1,107 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import { toast } from 'sonner';
 
 const BusinessCard = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [phone, setPhone] = useState('+7 (XXX) XXX-XX-XX');
   const [isEditingPhone, setIsEditingPhone] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+  const frontCardRef = useRef<HTMLDivElement>(null);
+  const backCardRef = useRef<HTMLDivElement>(null);
+
+  const exportToPNG = async () => {
+    if (!frontCardRef.current || !backCardRef.current) return;
+    
+    setIsExporting(true);
+    toast.info('Создаю PNG...');
+    
+    try {
+      const frontCanvas = await html2canvas(frontCardRef.current, {
+        scale: 3,
+        backgroundColor: null,
+        logging: false,
+      });
+      
+      const backCanvas = await html2canvas(backCardRef.current, {
+        scale: 3,
+        backgroundColor: null,
+        logging: false,
+      });
+
+      const combinedCanvas = document.createElement('canvas');
+      const ctx = combinedCanvas.getContext('2d');
+      if (!ctx) return;
+
+      combinedCanvas.width = frontCanvas.width;
+      combinedCanvas.height = frontCanvas.height + backCanvas.height + 60;
+      
+      ctx.fillStyle = '#f1f5f9';
+      ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
+      
+      ctx.drawImage(frontCanvas, 0, 0);
+      ctx.drawImage(backCanvas, 0, frontCanvas.height + 60);
+
+      const link = document.createElement('a');
+      link.download = 'arsego-business-card.png';
+      link.href = combinedCanvas.toDataURL('image/png');
+      link.click();
+
+      toast.success('PNG скачан!');
+    } catch (error) {
+      toast.error('Ошибка экспорта PNG');
+      console.error(error);
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const exportToPDF = async () => {
+    if (!frontCardRef.current || !backCardRef.current) return;
+    
+    setIsExporting(true);
+    toast.info('Создаю PDF...');
+    
+    try {
+      const frontCanvas = await html2canvas(frontCardRef.current, {
+        scale: 3,
+        backgroundColor: null,
+        logging: false,
+      });
+      
+      const backCanvas = await html2canvas(backCardRef.current, {
+        scale: 3,
+        backgroundColor: null,
+        logging: false,
+      });
+
+      const pdf = new jsPDF({
+        orientation: 'landscape',
+        unit: 'mm',
+        format: [90, 50],
+      });
+
+      const frontImgData = frontCanvas.toDataURL('image/png');
+      pdf.addImage(frontImgData, 'PNG', 0, 0, 90, 50);
+
+      pdf.addPage([90, 50], 'landscape');
+      const backImgData = backCanvas.toDataURL('image/png');
+      pdf.addImage(backImgData, 'PNG', 0, 0, 90, 50);
+
+      pdf.save('arsego-business-card.pdf');
+      toast.success('PDF скачан!');
+    } catch (error) {
+      toast.error('Ошибка экспорта PDF');
+      console.error(error);
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 flex items-center justify-center p-4">
@@ -29,6 +124,26 @@ const BusinessCard = () => {
           />
         </div>
 
+        <div className="mb-6 flex items-center justify-center gap-4">
+          <Button 
+            onClick={exportToPNG} 
+            disabled={isExporting}
+            className="flex items-center gap-2"
+          >
+            <Icon name="Download" size={16} />
+            Скачать PNG
+          </Button>
+          <Button 
+            onClick={exportToPDF} 
+            disabled={isExporting}
+            className="flex items-center gap-2"
+            variant="secondary"
+          >
+            <Icon name="FileDown" size={16} />
+            Скачать PDF
+          </Button>
+        </div>
+
         <div 
           className="perspective-1000 cursor-pointer"
           onClick={() => setIsFlipped(!isFlipped)}
@@ -44,6 +159,7 @@ const BusinessCard = () => {
             }}
           >
             <Card 
+              ref={frontCardRef}
               className="absolute inset-0 backface-hidden bg-gradient-to-br from-blue-500 to-slate-700 shadow-2xl"
               style={{ backfaceVisibility: 'hidden' }}
             >
@@ -106,6 +222,7 @@ const BusinessCard = () => {
             </Card>
 
             <Card 
+              ref={backCardRef}
               className="absolute inset-0 backface-hidden bg-white shadow-2xl"
               style={{ 
                 backfaceVisibility: 'hidden',
