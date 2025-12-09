@@ -1,16 +1,32 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 
 const BusinessCard = () => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [phone, setPhone] = useState('+7 (XXX) XXX-XX-XX');
+  const [isEditingPhone, setIsEditingPhone] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Визитка АРСЕГО</h1>
           <p className="text-slate-600">Нажмите на визитку, чтобы перевернуть</p>
+        </div>
+
+        <div className="mb-6 flex items-center justify-center gap-4">
+          <label className="text-sm font-medium text-slate-700">Номер телефона:</label>
+          <Input
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            onFocus={() => setIsEditingPhone(true)}
+            onBlur={() => setIsEditingPhone(false)}
+            className="w-64 text-center"
+            placeholder="+7 (XXX) XXX-XX-XX"
+          />
         </div>
 
         <div 
@@ -46,7 +62,7 @@ const BusinessCard = () => {
                     <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                       <Icon name="Brush" className="text-primary" size={28} />
                     </div>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Ремонт квартир</h3>
+                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Ремонт квартир под ключ</h3>
                     <ul className="text-xs text-slate-600 space-y-1">
                       <li>Выравнивание стен</li>
                       <li>Замена сантехники</li>
@@ -62,7 +78,7 @@ const BusinessCard = () => {
                     <ul className="text-xs text-slate-600 space-y-1">
                       <li>Генеральная уборка</li>
                       <li>Чистка мебели</li>
-                      <li>Дезинфекция</li>
+                      <li>Послестроительная</li>
                     </ul>
                   </div>
 
@@ -70,7 +86,7 @@ const BusinessCard = () => {
                     <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                       <Icon name="FlaskConical" className="text-primary" size={28} />
                     </div>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Поставка химии</h3>
+                    <h3 className="font-semibold text-slate-800 mb-2 text-sm">Поставка профессиональной химии</h3>
                     <ul className="text-xs text-slate-600 space-y-1">
                       <li>HoReCa</li>
                       <li>Прачечные</li>
@@ -80,19 +96,9 @@ const BusinessCard = () => {
                 </div>
 
                 <div className="text-center border-t pt-4">
-                  <div className="flex items-center justify-center gap-6 text-sm text-slate-700 mb-2">
-                    <div className="flex items-center gap-2">
-                      <Icon name="Phone" size={16} className="text-primary" />
-                      <span>+7 (XXX) XXX-XX-XX</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Icon name="Mail" size={16} className="text-primary" />
-                      <span>info@arsego.ru</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Icon name="Globe" size={16} className="text-primary" />
-                      <span>arsego.ru</span>
-                    </div>
+                  <div className="flex items-center justify-center gap-3 text-sm text-slate-700 mb-2">
+                    <Icon name="Phone" size={18} className="text-primary" />
+                    <span className="font-medium">{phone}</span>
                   </div>
                   <p className="text-xs text-slate-500 italic">Комплексные решения для вашего пространства</p>
                 </div>
@@ -107,22 +113,9 @@ const BusinessCard = () => {
               }}
             >
               <div className="h-full p-8 flex flex-col">
-                <div className="mb-6 pb-6 border-b">
-                  <div className="flex items-center gap-6">
-                    <div className="flex gap-4">
-                      <div className="w-16 h-16 rounded-full bg-slate-200 flex items-center justify-center">
-                        <Icon name="User" className="text-slate-600" size={32} />
-                      </div>
-                      <div className="w-16 h-16 rounded-full bg-slate-200 flex items-center justify-center">
-                        <Icon name="User" className="text-slate-600" size={32} />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-slate-800 mb-1">Основатели</h3>
-                      <p className="text-sm text-slate-600">Артём Иванов, Сергей Петров</p>
-                      <p className="text-xs text-slate-500 mt-2">10 лет на рынке • 500+ проектов</p>
-                    </div>
-                  </div>
+                <div className="mb-6 pb-4 border-b text-center">
+                  <h3 className="text-xl font-bold text-slate-800 mb-2">АРСЕГО</h3>
+                  <p className="text-xs text-slate-500">10 лет на рынке • 500+ проектов</p>
                 </div>
 
                 <div className="flex-1 grid grid-cols-3 gap-4 text-xs">
@@ -145,7 +138,7 @@ const BusinessCard = () => {
                       <li>• Послестроительная</li>
                       <li>• Химчистка мебели</li>
                       <li>• Мойка окон</li>
-                      <li>• Дезинфекция</li>
+                      <li>• Чистка ковров</li>
                       <li>• Регулярное обслуживание</li>
                     </ul>
                   </div>
@@ -154,19 +147,22 @@ const BusinessCard = () => {
                     <h4 className="font-semibold text-primary mb-2">Химия для бизнеса</h4>
                     <ul className="space-y-1 text-slate-600">
                       <li>• Моющие средства</li>
-                      <li>• Дезинфектанты</li>
                       <li>• Профессиональные средства</li>
                       <li>• Оборудование</li>
                       <li>• Расходные материалы</li>
                       <li>• Консультации по выбору</li>
+                      <li>• Оптовые поставки</li>
                     </ul>
                   </div>
                 </div>
 
                 <div className="flex items-end justify-between pt-4 border-t">
-                  <div className="text-xs text-slate-500">
-                    <p className="font-semibold mb-1">Свяжитесь с нами</p>
-                    <p>arsego.ru • info@arsego.ru</p>
+                  <div className="text-xs text-slate-600">
+                    <p className="font-semibold mb-1 flex items-center gap-2">
+                      <Icon name="Phone" size={14} className="text-primary" />
+                      {phone}
+                    </p>
+                    <p className="text-slate-500">Звоните с 9:00 до 21:00</p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 bg-slate-800 rounded flex items-center justify-center mb-1">
